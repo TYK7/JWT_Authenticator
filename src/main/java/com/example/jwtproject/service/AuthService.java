@@ -54,6 +54,27 @@ public class AuthService {
 
 
     @Transactional
+    public User getUserById(UUID userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + userId));
+    }
+
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException("User not found with username: " + username));
+    }
+
+    public boolean isTokenPotentiallyValid(String token) {
+        // This is a very basic check. A more robust implementation would involve
+        // checking token format, signature, and expiration without full validation.
+        // For now, we'll just check if it's not null or empty.
+        return token != null && !token.trim().isEmpty();
+    }
+
+    public String getUsernameFromToken(String token) {
+        return jwtUtil.getUsernameFromJwtToken(token);
+    }
+
     public User registerUser(RegistrationRequest registrationRequest) {
         if (userRepository.existsByUsername(registrationRequest.getUsername())) {
             throw new UsernameAlreadyExistsException("Username " + registrationRequest.getUsername() + " is already taken!");

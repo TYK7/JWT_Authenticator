@@ -110,8 +110,9 @@ public class TwoFactorAuthenticationService {
         }
         TimeProvider timeProvider = new SystemTimeProvider();
         CodeGenerator codeGenerator = new DefaultCodeGenerator();
-        CodeVerifier verifier = new DefaultCodeVerifier(codeGenerator, timeProvider);
-        // Allow for a time window (e.g., 1 previous and 1 next code) to account for clock skew
+        DefaultCodeVerifier verifier = new DefaultCodeVerifier(codeGenerator, timeProvider);
+        verifier.setTimePeriod(30); // Period in seconds
+        verifier.setAllowedTimePeriodDiscrepancy(1); // Number of periods of discrepancy to allow
         verifier.setTimePeriod(30); // Period in seconds
         verifier.setAllowedTimePeriodDiscrepancy(1); // Number of periods of discrepancy to allow
 
