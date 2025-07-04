@@ -56,11 +56,12 @@
         </dependency>
 
         <!-- 2FA Library -->
-        <dependency>
-            <groupId>dev.samstevens.totp</groupId>
-            <artifactId>totp-core</artifactId>
-            <version>1.7.1</version> <!-- Check for the latest version -->
-        </dependency>
+       <!-- https://mvnrepository.com/artifact/dev.samstevens.totp/totp -->
+<dependency>
+    <groupId>dev.samstevens.totp</groupId>
+    <artifactId>totp</artifactId>
+    <version>1.7.1</version>
+</dependency>
         <!-- QR Code Generation for 2FA -->
         <dependency>
             <groupId>com.google.zxing</groupId>
@@ -89,11 +90,7 @@
         </dependency>
 
         <!-- Database -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+        
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -103,10 +100,13 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-database-postgresql</artifactId> <!-- For PostgreSQL specific migrations if needed -->
-        </dependency>
+       <!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-database-postgresql -->
+<dependency>
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-database-postgresql</artifactId>
+    <version>11.10.0</version>
+    <scope>runtime</scope>
+</dependency>
 
 
         <!-- OpenAPI / Swagger -->
